@@ -1,0 +1,28 @@
+body {
+	background: #5dcae3;
+	font-family: "Arial Narrow";
+	color: black;
+}
+
+/* Al h1 también se le anexan los estilos del body */
+h1 {
+	font-size: xx-large;
+	font-style: italic;
+}
+
+p {
+	font-weight: bolder;
+	background: #35bcd4;
+}
+
+/* Nueva clase */
+.resaltado {
+	background: #3b7fb8;
+	font-weight: bold;
+}
+
+.nuevaClase {
+	font-family: "Century Gothic";
+	font-weight: bold;
+	background: #25e8aa;
+}

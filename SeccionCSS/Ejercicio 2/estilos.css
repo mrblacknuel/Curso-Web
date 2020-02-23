@@ -1,0 +1,10 @@
+/* Prioridades de los estilos.
+Prioridad 3: Archivo externo;
+Prioridad 2: Etiquetas en head;
+Prioridad 1: Atributos en el body
+*/
+body {
+	background: #c0c0c0;
+	color: #000080;
+	font-family: "Century Gothic";
+}

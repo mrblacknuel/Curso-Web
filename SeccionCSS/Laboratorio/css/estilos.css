@@ -1,0 +1,74 @@
+body {
+	background: white;
+}
+
+img{border: 0;}
+
+h1 {
+	padding: 5px 5px 0 5px;
+	margin: 0 0 15px 0;
+	color: #2b7c92;
+	font-size: 2em;
+}
+
+/* Creación de los tabuladores */
+
+div.tab {
+	background-image: url(http://icursos.net/cursos/HTML/Leccion03/IntroduccionCSS/LaboratorioCSS1/img/izqTab.gif);
+	/* Debe mostrarse aunque no tenga ningún elemento */
+	display: block;
+	/* Para que se apilen los div en la misma línea */
+	float: left;
+	height: 21px;
+	padding: 0;
+	/* Separación entre tabuladores */
+	margin: 0 1px 0 0;
+	/* Debe aparecer solo una vez la imagen */
+	background-repeat: no-repeat;
+}
+
+div.tab div {
+	background-image: url(http://icursos.net/cursos/HTML/Leccion03/IntroduccionCSS/LaboratorioCSS1/img/derTab.gif);
+	float: left;
+	height: 21px;
+	margin: 0;
+	/* Debe aparecer solo una vez la imagen */
+	background-repeat: no-repeat;
+	background-position: top right;
+}
+
+/* DivExterno divInterno AnclaEnDiv */
+div.tab div a {
+	/* Margen a izquierda y derecha para que no se quede apelotonado */
+	margin: 0 8px;
+	height: 21px;
+	line-height: 21px;
+	background-image: url(http://icursos.net/cursos/HTML/Leccion03/IntroduccionCSS/LaboratorioCSS1/img/centroTab.gif);
+	display: block;
+	text-decoration: none;
+	vertical-align: middle;
+	/* La imagen debe repetirse */
+	background-repeat: repeat;
+}
+
+#actual {
+	background-image: url(http://icursos.net/cursos/HTML/Leccion03/IntroduccionCSS/LaboratorioCSS1/img/actIzqTab.gif);
+}
+
+#actual div {
+	background-image: url(http://icursos.net/cursos/HTML/Leccion03/IntroduccionCSS/LaboratorioCSS1/img/actDerTab.gif);
+}
+
+#actual div a {
+	background-image: url(http://icursos.net/cursos/HTML/Leccion03/IntroduccionCSS/LaboratorioCSS1/img/actCentroTab.gif);
+}
+
+/* Para cuando le pinchemos al hipervinculo */
+a:link, a:visited {
+	color: #226275;
+	text-decoration: underline;
+}
+
+a:active, a:hover {
+	color: #39a5c4;
+}
