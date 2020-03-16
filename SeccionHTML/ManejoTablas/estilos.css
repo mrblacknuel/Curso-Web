@@ -1,0 +1,32 @@
+body {
+	background: #f1f3fe;
+	font-family: "Comic Sans MS";
+}
+
+caption {
+	height: 30pt;
+	font-weight: bold;
+	color: #110000;
+}
+
+th {
+	text-align: center;
+	color: #1A0000;
+	background: #FF7814;
+}
+
+td {
+	text-align: justify;
+	color: #5B5858;
+	/*background: #FFDDB9;*/
+	font-size: small;
+	vertical-align: middle;
+}
+
+.row1 {
+	background: #ffffff;
+}
+
+.row2 {
+	background: #FFD89B;
+}
