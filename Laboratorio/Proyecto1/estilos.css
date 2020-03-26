@@ -1,0 +1,32 @@
+body {
+	font-family: Times New Roman, Arial;
+	font-size: 20px;
+	background-color: #FFDDAB;
+	color: #870000;
+	text-align: center;
+}
+
+.titulo {
+	font-size: 40px;
+}
+
+.formulario {
+	font-size: 30px;
+}
+
+#tablaUsuarios {
+	font-size: 40px;
+	padding: 10px;
+	margin: 0 auto;
+}
+
+#tablaUsuarios th {
+	padding: 15px;
+}
+
+#tablaUsuarios td {
+	font-size: 35px;
+	padding: 15px;
+	color: #FF5B00;
+}
+
