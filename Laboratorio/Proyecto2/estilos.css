@@ -1,0 +1,22 @@
+body {
+	color: #FF9900;
+	background-color: black;
+}
+
+h1 {
+	text-align: center;
+	font-size: 40px;
+	color: #FF5A09;
+}
+
+.formulario {
+	border-collapse: separate; 
+	border-spacing: 10px 15px; 
+}
+
+.boton {
+	background: #F95700;
+	padding: 4px 10px;
+	color: #FFF;
+	border: #C30 1px solid;
+}
