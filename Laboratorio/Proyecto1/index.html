@@ -14,7 +14,7 @@
 	</form>
 	<br>
 	<br>
-	<form class="formulario">
+	<form class="formulario" onsubmit="return false">
 		Usuario a buscar: <input type="text" name="actualUser" onchange="buscarUsuario(this);">
 	</form>
 	<br>
@@ -22,12 +22,8 @@
 	<br>
 	<table id="tablaUsuarios">
 		<tr>
-			<th>Posición</th>
-			<th>Nombre</th>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Pepito</td>
+			<th><u>Posición</u></th>
+			<th><u>Nombre</u></th>
 		</tr>
 	</table>
 </body>
