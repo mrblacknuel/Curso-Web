@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Fomulario Contacto</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<body>
+	<h1>Formulario Web</h1>
+	<!-- Agrega un borde -->
+	<fieldset>
+		<legend>Detalles de contacto</legend>
+		<form action="#">
+			<!-- Campo obligatorio que se autoclickará en inicio y tiene que tener más de 5 letras -->
+			<label for="nombre">Nombre:</label>
+			<input type="text" autofocus="" placeholder="Escribe tu nombre" name="nombre" required="" pattern="[a-zA-Z\s]{5,}">
+			<!-- Texto en la misma línea -->
+			<span class="invalid"> * El nombre es requerido</span>
+
+			<label for="email">Email:</label>
+			<input type="email" placeholder="Escribe tu email" name="email" required="">
+			<!-- Texto en la misma línea -->
+			<span class="invalid"> * El email es requerido</span>
+
+			<label for="telefono">Telefono:</label>
+			<input type="tel" placeholder="Escribe tu telefono" name="telefono" required="">
+			<!-- Texto en la misma línea -->
+			<span class="invalid"> * El telefono es requerido</span>
+
+			<label for="pais">Pais:</label>
+			<input name="pais" list="paises" placeholder="Escribe/Selecciona tu pais"/>
+			<datalist id="paises">
+				<option value="Españita">
+				<option value="Perú">
+				<option value="Ecuador">
+				<option value="Francia">
+				<option value="Otro">
+			</datalist>
+
+			<label for="edad">Edad:</label>
+			<input type="number" name="edad" min="18" max="65">
+
+			<label for="nacimiento">Fecha nacimiento:</label>
+			<input type="date" name="nacimiento" min="1900-01-01" max="2020-12-31">
+
+			<!-- Botón de envío -->
+			<div>
+				<input type="submit" value="Enviar" id="enviar">
+			</div>
+		</form>
+	</fieldset>
+</body>
+</html>
