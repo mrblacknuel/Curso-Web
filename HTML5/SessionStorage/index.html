@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Session storage</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		// Cuando la lista pierde el foco guarda el contenido en Local Storage
+		$(document).ready(function () {
+			$("#lista").blur(function () {
+				sessionStorage.setItem("listado", $("#lista").html());
+				// Refresca la página para poder ver los cambios
+				location.reload();
+			});
+
+			// Muestra los datos en LS
+			var listado = sessionStorage.getItem("listado");
+			if (listado) {
+				$("#mensaje").html("<h3>Datos en SS:</h3>");
+				$("#lista").html(listado);
+				$("#resultado").text(listado);
+			} else {
+				$("#mensaje").text("No hay datos en SS");
+			}
+
+			// Funcionalidad del botón limpiar
+			$("#limpiar").click(function () {
+				sessionStorage.removeItem("listado");
+				location.reload();
+			});
+
+		});
+</script>
+</head>
+<body>
+	<h1>Manejo de Session Storage</h1>
+	<div>
+		<ul id="lista" contenteditable="true">
+			<li></li>
+		</ul>
+	</div>
+
+	<div id="mensaje"></div>
+	<div id="resultado"></div>
+	<a href="resultados.html">Ir a resultados</a>
+</body>
+</html>

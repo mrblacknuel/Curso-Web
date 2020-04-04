@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Mostrar resultados</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		// Cuando la lista pierde el foco guarda el contenido en Local Storage
+		$(document).ready(function () {
+
+			// Muestra los datos en LS
+			var listado = sessionStorage.getItem("listado");
+			if (listado) {
+				$("#mensaje").html("<h3>Datos en SS:</h3>");
+				$("#resultado").text(listado);
+			} else {
+				$("#mensaje").text("No hay datos en SS");
+			}
+
+		});
+</script>
+</head>
+<body>
+	<input type="button" id="limpiar" value="Limpiar"/>
+
+	<div id="mensaje"></div>
+	<div id="resultado"></div>
+	<a href="index.html">Volver</a>
+</body>
+</html>

@@ -1,0 +1,8 @@
+CACHE MANIFEST
+
+CACHE:
+index.html
+resultados.html
+
+FALLBACK:
+images/logotipo.png images/logotipo_offline.png
