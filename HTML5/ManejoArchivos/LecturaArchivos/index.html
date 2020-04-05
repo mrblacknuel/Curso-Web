@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Seleccion archivo texto</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// Preguntamos si soporta el API de File y el de drag & drop
+			if (Modernizr.draganddrop && window.FileList) {
+				alert("Tu navegador soporta el API de File y el de drag & drop");
+			} else {
+				alert("Tu navegador no soporta las API");
+			}
+
+			// Cuando se cambie el archivo se lee su contenido y se añade al textarea
+			$("#archivo").change(manejoArchivos);
+
+			function manejoArchivos(evento) {
+				var archivo = evento.target.files[0];
+
+				if (archivo.type != "text/plain") {
+					alert("Debe seleccionar un archivo de texto");
+					return;
+				}
+
+				var reader = new FileReader();
+
+				reader.onload = function (evento) {
+					var resultadoTexto = evento.target.result;
+					$("#contenido").append(resultadoTexto);
+				}
+
+				reader.readAsText(archivo);
+			}
+		});
+	</script>
+</head>
+<body>
+	<h1>Seleccion archivo texto</h1>
+	<form action="#" method="post">
+		<label>Seleccione un archivo</label>
+		<input type="file" name="archivo" id="archivo">
+		<p></p>
+		<textarea cols="100" rows="15" id="contenido"></textarea>
+	</form>
+</body>
+</html>

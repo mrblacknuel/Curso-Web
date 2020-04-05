@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Drag and drop</title>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// Preguntamos si soporta el API de File y el de drag & drop
+			if (Modernizr.draganddrop && window.FileList) {
+				alert("Tu navegador soporta el API de File y el de drag & drop");
+			} else {
+				alert("Tu navegador no soporta las API");
+			}
+
+			// Bind asocia uno o más eventos
+			$("#zona_arrastrar").bind({
+				"drop" : manejoDrop,
+				"dragover" : manejoDragOver
+			});
+
+			function manejoDragOver(evento) {
+				// Evitamos que el navegador abra la imagen
+				evento.stopPropagation();
+				evento.preventDefault();
+			}
+
+			function manejoDrop(evento) {
+				// Evitamos que el navegador abra la imagen
+				evento.stopPropagation();
+				evento.preventDefault();
+
+				// JQuery envuelve el evento original
+				// Si puede coge el dataTransfer directamente, si no en caso de que JQuery lo haya metido en el campo originalEvent 
+				// se coge de ahí. Lo mismo aplica para archivos.
+				var dataTransfer = evento.dataTransfer || (evento.originalEvent && evento.originalEvent.dataTransfer);
+				var archivos = evento.target.files || (dataTransfer && dataTransfer.files);
+
+				// Se escribe en la sección de salida
+				$("#salida").html("");
+				for (var i = 0; i < archivos.length; i++) {
+					var informacion = "<p>Nombre: " + archivos[i].name + ", Tamaño: " + archivos[i].size + ", Tipo MIME: " + archivos[i].type + "</p>";
+					$("#salida").append(informacion);
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+	<h1>Drag and drop</h1>
+	<p>Arrastra tus archivos aquí</p>
+	<div id="zona_arrastrar"></div>
+	<p>Resultado:</p>
+	<div id="salida"></div>
+</body>
+</html>
