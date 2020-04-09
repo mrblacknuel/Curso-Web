@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Detección de Geolocalización</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if (Modernizr.geolocation) {
+				//alert("El navegador soporta geolocalización");
+				
+				navigator.geolocation.getCurrentPosition(mostrarCoordenadas);
+			} else {
+				alert("El navegador NO soporta geolocalización");
+			}
+
+			function mostrarCoordenadas(posicion) {
+				var latitud = posicion.coords.latitude;
+				var longitud = posicion.coords.longitude;
+
+				$("#resultado").append("<p>Latitud: " + latitud + "</p>");
+				$("#resultado").append("<p>Longitud: " + longitud + "</p>");
+			}
+		});
+	</script>
+</head>
+<body>
+	<h1>Detección de Geolocalización</h1>
+	<div id="resultado"></div>
+</body>
+</html>

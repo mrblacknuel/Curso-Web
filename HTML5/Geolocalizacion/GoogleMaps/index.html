@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Copia de Geolocalización</title>
+	<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcwS-Qjee0SaDofUcDTxES1HYXSsHLpbg&callback=initMap" async defer></script>
+	<script type="text/javascript">
+		function initMap() {
+			// Localización por defecto
+			var defaultPosition = {
+				lat: -34.397,
+				lng: 150.644
+			};
+
+			var opciones = {center: defaultPosition, zoom: 15};
+			var map = new google.maps.Map(document.getElementById('map'), opciones);
+			var marker = new google.maps.Marker({position: defaultPosition, map: map, title: "Estás aquí!"});
+
+			if (navigator.geolocation) {
+				// Se actualizará el mapa con el cambio de ubicación
+				navigator.geolocation.watchPosition(actualizarMapa);
+			} else {
+				alert("No se puede geolocalizar el individuo");
+			}
+
+			// Si el usuario se mueve actualiza el mapa
+			function actualizarMapa(position) {
+				var userPosition = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
+
+				map.setCenter(userPosition);
+				marker.setPosition(userPosition);
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Geolocalización con Google Maps</h1>
+	<div id="map"></div>
+</body>
+</html>
