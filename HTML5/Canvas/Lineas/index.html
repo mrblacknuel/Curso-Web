@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Líneas con Canvas</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if (Modernizr.canvas) {
+				var context = $("#canvas")[0].getContext("2d");
+
+				context.beginPath(); // Comienza nuestra trayectoria
+				context.moveTo(10, 10); // Especificamos punto de inicio
+				context.lineTo(100, 100); // Punto fin
+				context.stroke();
+
+				// Segunda línea. Toma como punto inicio el anterior punto fin
+				context.lineTo(200, 10);
+				context.closePath(); // Cierra la trayectoria. Une con una línea los puntos pendientes.
+				context.stroke();
+				context.fill(); // Rellenamos la figura
+
+				context.save(); // Guarda el estado actual
+
+				// Cambiamos cosicas
+				context.fillStyle = "yellowgreen";
+				context.strokeStyle = "yellow";
+				context.lineWidth = 10;
+
+				// Nueva figura
+				context.beginPath();
+				context.moveTo(200, 200); // Pone los puntos y los cierra, creando un polígono
+				context.lineTo(200, 350);
+				context.lineTo(250, 350);
+				context.closePath();
+				context.stroke();
+				context.fill();
+
+				context.restore(); // Restaura el último estado
+				context.beginPath();
+				context.moveTo(300, 200);
+				context.lineTo(400, 200);
+				context.lineTo(400, 250);
+				context.closePath();
+				context.stroke(); // Se dibuja con las mismas propiedades que en el anterior estado
+				context.fill();
+			} else {
+				alert("Tu navegador soporta canvas");
+			}
+		})
+	</script>
+</head>
+<body>
+	<h1>Líneas con Canvas</h1>
+	<canvas id="canvas" width="600" height="400" style="border: dotted gray 1px">
+		Tu navegador no soporta canvas
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Transferencia Drag & Drop</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if (Modernizr.draganddrop) {
+				$("#img1").bind("dragstart", manejoDragStart);
+				$("#img2").bind("dragstart", manejoDragStart);
+				$("#img3").bind("dragstart", manejoDragStart);
+
+				$("#zona_arrastrar").bind({"dragover" : manejoDragOver, "drop" : manejoDrop});
+			} else {
+				alert("Tu navegador NO soporta D&D");
+				return;
+			}
+
+			function manejoDragStart(evento) {
+				$("#msg_eventos").html("Inicio de elemento arrastrar: " + evento.target.id);
+				evento.originalEvent.dataTransfer.setData("text/html", this.id);
+			}
+
+			function manejoDragOver(evento) {
+				// Para que drop no se solape con este evento
+				evento.stopPropagation();
+				evento.preventDefault();
+
+				$("#msg_eventos").html("Entra en " + evento.target.id + " por DragOver");
+			}
+
+			function manejoDrop(evento) {
+				// Para que dragover no se solape con este evento
+				evento.stopPropagation();
+				evento.preventDefault();
+
+				$("#msg_eventos").html("Soltado en " + evento.target.id + " por Drop");
+
+				var idImgSel = evento.originalEvent.dataTransfer.getData("text/html");
+				$("#elementos").append(idImgSel + " ");
+
+				// La imagen seleccionada pasa a estar contenida dentro de la zona_arrastrar
+				evento.target.appendChild(document.getElementById(idImgSel));
+			}
+		});
+	</script>
+</head>
+<body>
+	<h1>Transferencia Drag & Drop</h1>
+	<div id="msg_eventos"></div>
+	<!-- Los agrupamos para darles formato -->
+	<figure>
+		<img id="img1" draggable="true" src="recursos/laptop.png">
+		<img id="img2" draggable="true" src="recursos/mango.jpg">
+		<img id="img3" draggable="true" src="recursos/shirt.jpg">
+		<figcaption>Imágenes a arrastrar:</figcaption>
+	</figure>
+	<div id="zona_arrastrar">Arrastra la imagen aquí</div>
+	<p>Elementos seleccionados:</p>
+	<div id="elementos"></div>
+</body>
+</html>

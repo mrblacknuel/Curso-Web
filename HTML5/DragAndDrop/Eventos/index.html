@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Detección de Drag & Drop</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if (Modernizr.draganddrop) {
+				$("#img1").bind("dragstart", manejoDragStart);
+
+				$("#zona_arrastrar").bind({"dragover" : manejoDragOver, "drop" : manejoDrop});
+			} else {
+				alert("Tu navegador NO soporta D&D");
+				return;
+			}
+
+			function manejoDragStart(evento) {
+				$("#msg_eventos").html("Inicio de elemento arrastrar: " + evento.target.id);
+			}
+
+			function manejoDragOver(evento) {
+				// Para que drop no se solape con este evento
+				evento.stopPropagation();
+				evento.preventDefault();
+
+				$("#msg_eventos").html("Entra en " + evento.target.id + " por DragOver");
+			}
+
+			function manejoDrop(evento) {
+				// Para que dragover no se solape con este evento
+				evento.stopPropagation();
+				evento.preventDefault();
+
+				$("#msg_eventos").html("Soltado en " + evento.target.id + " por Drop");
+			}
+		});
+	</script>
+</head>
+<body>
+	<h1>Detección de Drag & Drop</h1>
+	<div id="msg_eventos"></div>
+	<img id="img1" draggable="true" src="recursos/laptop.png">
+	<div id="zona_arrastrar">Arrastra la imagen aquí</div>
+</body>
+</html>

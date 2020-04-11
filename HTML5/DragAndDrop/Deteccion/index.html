@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Detección de Drag & Drop</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if (Modernizr.draganddrop) {
+				$("#img1").bind("dragstart", manejoDragStart);
+			} else {
+				alert("Tu navegador NO soporta D&D");
+				return;
+			}
+
+			function manejoDragStart(evento) {
+				$("#msg_eventos").html("Inicio de elemento arrastrar: " + evento.target.id);
+			}
+		});
+	</script>
+</head>
+<body>
+	<h1>Detección de Drag & Drop</h1>
+	<div id="msg_eventos"></div>
+	<img id="img1" draggable="true" src="recursos/laptop.png">
+	<div id="zona_arrastrar"></div>
+</body>
+</html>

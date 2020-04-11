@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rectángulos con Canvas</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if (Modernizr.canvas) {
+				var context = $("#canvas")[0].getContext("2d");
+				context.strokeStyle = "yellow"; // Color del pincel
+				context.lineWidth = 7; // Ancho de línea
+				context.strokeRect(10, 10, 200, 100); // Dibuja el rectangulo en los puntos (10, 10) y (200, 100)
+				context.fillStyle = "yellowgreen"; // Le da un color de relleno
+				context.fillRect(10, 10, 200, 100); // Le da un color de relleno
+			} else {
+				alert("Tu navegador soporta canvas");
+			}
+		})
+	</script>
+</head>
+<body>
+	<h1>Rectángulos con Canvas</h1>
+	<canvas id="canvas" width="600" height="400" style="border: dotted gray 1px">
+		Tu navegador no soporta canvas
+	</canvas>
+</body>
+</html>

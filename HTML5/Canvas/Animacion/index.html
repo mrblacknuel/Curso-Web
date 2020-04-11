@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animación con Canvas</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		var x = 0, y = 150, anchoRectangulo = 40;
+		var direccion;
+
+		$(document).ready(function () {
+			if (Modernizr.canvas) {
+				animar();
+
+			} else {
+				alert("Tu navegador soporta canvas");
+			}
+		})
+
+		function animar() {
+			var canvas = $("#canvas")[0];
+			var context = canvas.getContext("2d");
+
+			// Borra todo lo anterior
+			context.clearRect(0, 0, canvas.width, canvas.height);
+
+			// Definir rectángulo
+			context.strokeStyle = "yellow";
+			context.fillStyle = "yellowgreen";
+			context.lineWidth = 5;
+			context.fillRect(x, y, anchoRectangulo, anchoRectangulo);
+			context.strokeRect(x, y, anchoRectangulo, anchoRectangulo);
+
+			actualizarDibujo();
+			setTimeout("animar()", 1); // Se llamará dentro de un milisegundo
+		}
+
+		function actualizarDibujo() {
+			// Dirección
+			definirDireccion();
+
+			if (direccion == "derecha") {
+				x += 2;
+			} else {
+				x -= 2;
+			}
+		}
+
+		function definirDireccion() {
+			var canvas = $("#canvas")[0];
+
+			if (x == 0) {
+				direccion = "derecha";
+			} else if (x == canvas.width - anchoRectangulo) {
+				direccion = "izquierda";
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Animación con Canvas</h1>
+	<canvas id="canvas" width="600" height="400" style="border: dotted gray 1px">
+		Tu navegador no soporta canvas
+	</canvas>
+</body>
+</html>

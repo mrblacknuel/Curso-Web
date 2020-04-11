@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Círculos con Canvas</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			if (Modernizr.canvas) {
+				var canvas = document.getElementById("canvas");
+				var context = canvas.getContext("2d");
+
+				// Obtenemos el centro del canvas
+				var centroX = canvas.width / 2;
+				var centroY = canvas.height / 2;
+				var radio = 50;
+
+				// Dibujamos un círculo completo
+				context.beginPath(); // Inicio del dibujo (no hace falta para el rectángulo)
+				context.arc(centroX, centroY, radio, 0, 2 * Math.PI, false);
+				context.linewidth = 5;
+				context.strokeStyle = "yellow";
+				context.stroke();
+
+				// Rellenamos el círculo
+				context.fillStyle = "yellowgreen";
+				context.fill();
+
+				// Dibujamos un arco en el sentido de las agujas del reloj (último parámetro a true)
+				context.beginPath();
+				context.arc(60, 60, radio, 0, 0.5 * Math.PI);
+				context.strokeStyle = "black"; // Por defecto es negro para todos los elementos
+				context.stroke();
+
+				// Círculo 180 grados
+				context.beginPath();
+				context.arc(300, 60, radio, 0, Math.PI);
+				context.stroke();
+
+				// Círculo 90º sentido contrario al reloj
+				context.beginPath();
+				context.arc(500, 60, radio, 0, -0.5 * Math.PI, true);
+				context.stroke();
+
+			} else {
+				alert("Tu navegador soporta canvas");
+			}
+		})
+	</script>
+</head>
+<body>
+	<h1>Círculos con Canvas</h1>
+	<canvas id="canvas" width="600" height="400" style="border: dotted gray 1px">
+		Tu navegador no soporta canvas
+	</canvas>
+</body>
+</html>
