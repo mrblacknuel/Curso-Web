@@ -1,0 +1,77 @@
+/* Selector de hermanos */
+
+/* Si encuentra un elemento div y dentro de ese div hay un párrafo, aplicale este estilo a dicho párrafo.
+   Selecciona a los p cuyo padre es un div */
+div > p {
+	color: red;
+	background-color: yellow;
+}
+
+/* Selecciona los párrafos p posteriores ADYACENTES a div (en el mismo nivel en la jerarquía). */
+div + p {
+	color: black;
+	background-color: yellowgreen;
+}
+
+/* Selecciona los p cuyo div es su hermano, estando p tras la definición de div. */
+/*div ~ p {
+	color: white;
+	background-color: green;
+}*/
+
+/* Selector por atributos */
+
+/* Elementos a del atributo href que comiencen por http */
+a[href ^= http] {
+	color: red;
+}
+
+/* Elemento a cuyo atributo href termine con .html */
+a[href $= ".html"] {
+	color: blueviolet;
+}
+
+/* Elemento a cuyo atributo href que termine con pdf */
+a[href $= ".pdf"] {
+	/* Ponemos una imagen como fondo del enlace */
+	background: url(../images/pdf_icon.png) no-repeat right;
+	padding-right: 25px;
+	color: darkred; 
+}
+
+/* Selectores n-child */
+
+/* Selecciona el primer h1 que encuentra en la página */
+h1:first-child {
+	color: blue;
+}
+
+/* Selecciona el último h1 que encuentra en la página */
+h1:last-of-type {
+	color: yellowgreen;
+}
+
+/* Selecciona el primer li que encuentra en la página */
+li:first-child {
+	color: red;
+}
+
+/* Selecciona el segundo li que encuentra en la página. Se maneja como un array */
+li:nth-child(2) {
+	color: green;
+}
+
+/* Selecciona los li múltiplos de 3 comenzando en el segundo que encuentra en la página.*/
+li:nth-child(3n + 2) {
+	color: blue;
+}
+
+/* Selecciona el 4º elemento empezando por el final */
+li:nth-last-child(4) {
+	color: purple;
+}
+
+/* Combinamos dos selectores */
+li:nth-child(n + 2), li:nth-last-child(n + 2) {
+	color: purple;
+}
