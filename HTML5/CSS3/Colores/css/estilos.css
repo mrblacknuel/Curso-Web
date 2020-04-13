@@ -1,0 +1,107 @@
+.wrapper {
+	position: relative;
+	float: left;
+	left: 0px; /* Sin pixeles hacia la izq */
+	width: 700px;
+	margin-bottom: 10px;
+}
+
+.left1 {
+	display: table;
+	position: relative;
+	float: left;
+	left: 5px;
+	width: 140px;
+	height: 100px;
+	border: 1px dashed gray;
+	padding: 5px;
+	text-align: center;
+	line-height: 20px;
+}
+
+.left2 {
+	display: table;
+	position: relative;
+	float: left;
+	left: 15px;
+	width: 140px;
+	height: 100px;
+	border: 1px dashed gray;
+	padding: 5px;
+	text-align: center;
+	line-height: 20px;
+}
+
+.left3 {
+	display: table;
+	position: relative;
+	float: left;
+	left: 25px;
+	width: 140px;
+	height: 100px;
+	border: 1px dashed gray;
+	padding: 5px;
+	text-align: center;
+	line-height: 20px;
+}
+
+body {
+	border-width: 0px;
+	padding: 0px;
+	margin: 0px;
+	font-size: 90%;
+	color: white;
+}
+
+h1 {
+	color: red;
+}
+
+span {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/* Definición de colores */
+#div1 {
+	background: #00FFFF;
+	color: grey;
+}
+
+#div2 {
+	background: #FF0;
+	color: grey;
+}
+
+#div2 {
+	background: #FF0;
+	color: grey;
+}
+
+#div3 {
+	background: #FF0;
+	color: grey;
+}
+
+img:hover {
+	opacity: 0.5;
+}
+
+#div4 {
+	/* Chrome. Gradiente lineal que empieza en 0, 0 y acaba en 0, 100. 
+	Los dos últimos parámetros son los valores de inicio y fin.*/
+	background: -webkit-gradient(linear, 0%, 0%, 0%, 100%, from(rgba(109, 0, 25, 1), to(rgba(200, 3, 31, 1))));
+
+	/* Estándar */
+	background: linear-gradient(rgba(200, 3, 41, 1), rgba(109, 0, 25, 1));
+}
+
+#div5 {
+	/* Estándar */
+	background: linear-gradient(to right, #FF1616, #3C97FF, #FF1616, #3C97FF, #FF1616);
+}
+
+#div6 {
+	/* Estándar */
+	background: radial-gradient(circle, #FF1616, #3C97FF);
+}
