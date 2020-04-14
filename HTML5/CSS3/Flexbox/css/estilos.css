@@ -1,0 +1,56 @@
+#contenedor div {
+	background: aqua;
+	padding: 10px;
+	width: 40px;
+	margin: 10px;
+}
+
+#contenedor {
+	width: 500px;
+	border: dashed gray;
+	
+	/* Para poder manejar el contenedor como una caja */
+	display: -moz-box;
+	display: -webkit-box;
+	display: box;
+
+	/* Ordena los elementos de forma vertical */
+	-moz-box-orient: vertical;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
+
+	/* Invierte el orden de los elementos
+	-moz-box-direction: reverse;
+	-webkit-box-direction: reverse;
+	box-direction: reverse;*/
+
+	/* Centra los elementos */
+	-moz-box-align: center;
+	-webkit-box-align: center;
+	box-align: center;
+
+	-moz-box-pack: justify;
+	-webkit-box-pack: justify;
+	box-pack: justify;
+}
+
+#uno {
+	/* La caja se expande todo lo que pueda según el elemento padre */
+	-moz-flex: 1;
+	-webkit-box-flex: 1;
+	box-flex: 1;
+}
+
+#dos {
+	/* La caja se expande todo lo que pueda según el elemento padre */
+	-moz-flex: 1;
+	-webkit-box-flex: 1;
+	box-flex: 1;
+}
+
+#tres {
+	/* La caja se expande todo lo que pueda según el elemento padre */
+	-moz-flex: 1;
+	-webkit-box-flex: 1;
+	box-flex: 1;
+}
