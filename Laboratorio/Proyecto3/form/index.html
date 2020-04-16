@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="main.css">
+    <!-- Se aplicará el estilo solo para dispositivos con al menos 830px de ancho y no cuando vaya a impirmirse -->
+    <link rel="stylesheet" href="escritorio.css" media="only screen and (min-width:830px)">
+    <!-- Se aplicará al rango [0, 830] -->
+    <link rel="stylesheet" href="movil.css" media="only screen and (max-width:830px) and (min-width: 0px)">
+    <!-- Para los móviles se aplica el ancho del dispositivo -->
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <div class="cabecero-contenedor">
+        <header class="contenedor limpiar">
+            <h1 class="titulo">Proyecto final</h1>
+            <nav>
+                <ul>
+                    <li><a href="../form/">Formulario</a></li>
+                    <li><a href="../drag/">Drag</a></li>
+                    <li><a href="../video/">Video</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div class="principal contenedor limpiar">
+        <!-- Sección para login -->
+        <section class="login">
+            <h1>Inicio de sesión</h1>
+            <form action="">
+                <label for="nombre">Nombre:</label>
+                <input type="text">
+                <br>
+                <label for="password">Password:</label>
+                <input type="password">
+                <br>
+                <input type="button" value="Login">
+            </form>
+        </section>
+
+        <!-- Sección para registro -->
+        <section class="register">
+            <h1>Registro</h1>
+            <form action="">
+                <label for="nombre">Nombre:</label>
+                <input type="text" required pattern="[a-zA-Z\s]{5,}">
+                <span>(!)</span>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" required>
+                <span>(!)</span>
+                <br>
+                <label for="nacimiento">Fecha de nacimiento:</label>
+                <input type="date">
+                <br>
+                <label for="pais">País:</label>
+                <input list="paises" placeholder="Escribe/Selecciona tu país">
+                <datalist id="paises">
+                    <option value="Españita">
+                    <option value="Perú">
+                    <option value="Ecuador">
+                    <option value="Francia">
+                    <option value="Otro">
+                </datalist>
+                <br>
+                <input type="button" value="Sign Up">
+            </form>
+        </section>
+    </div>
+
+    <div class="pie-pagina-contenedor">
+        <footer>
+            <h3>Pie de página</h3>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+/* Sombra en Nota */
+
+.cabecero-contenedor {
+    -webkit-box-shadow: 0 5px 10px #aaa;
+    -moz-box-shadow: 0 5px 10px #aaa;
+    box-shadow: 0 5px 10px #aaa;
+}
+
+.titulo {
+    float: left;
+}
+
+nav {
+    float: right;
+    width: 38%;
+}
+
+
+/* Ancho máximo página.
+ Si la resolución es muy grande los elementos no se flotan a los extremos,
+ se quedan en el centro. */
+
+@media only screen and (min-width: 2000px) {
+    .contenedor {
+        width: 2000px;
+        margin: 0 auto;
+    }
+}

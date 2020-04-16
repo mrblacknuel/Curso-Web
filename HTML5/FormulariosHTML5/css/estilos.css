@@ -1,33 +1,45 @@
 body {
-	color: #330015;
-	font-size: 16px;
+    color: #330015;
+    font-size: 16px;
 }
 
+
 /* Para que las etiquetas queden cada una en su renglón */
+
 label {
-	display: block;
+    display: block;
 }
+
 
 /*  Cuando la caja tiene contenido invalido se pone roja.
 	Con ':' se indica el estado del objeto */
+
 input:invalid {
-	border: 1px solid #FF000F;
+    border: 1px solid #FF000F;
 }
+
 
 /* Cuando la caja tiene contenido valido se pone azul */
+
 input:valid {
-	background-color: lightyellow;
-	border: 1px solid #FF1FB4;
+    background-color: lightyellow;
+    border: 1px solid #FF1FB4;
 }
+
 
 /** Aplican al span **/
+
+
 /* Si el estado es válido y la clase aplicada es invalid hacemos que se oculte */
+
 input:valid+.invalid {
-	visibility: hidden;
+    visibility: hidden;
 }
 
+
 /* Si el estado es inválido y la clase aplicada es invalid hacemos que se muestre */
+
 input:invalid+.invalid {
-	visibility: true;
-	color: red;
+    visibility: true;
+    color: red;
 }

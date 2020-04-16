@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="main.css">
+    <!-- Se aplicará el estilo solo para dispositivos con menos de 769px de ancho y no cuando vaya a impirmirse -->
+    <link rel="stylesheet" href="escritorio.css" media="only screen and (min-width:769px)">
+    <!-- Se aplicará al rango [0, 481] -->
+    <link rel="stylesheet" href="movil.css" media="only screen and (max-width:480px) and (min-width: 0px)">
+    <!-- Para los móviles se aplica el ancho del dispositivo -->
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (Modernizr.draganddrop) {
+                $("#img1").bind("dragstart", manejoDragStart);
+                $("#img2").bind("dragstart", manejoDragStart);
+                $("#img3").bind("dragstart", manejoDragStart);
+
+                $("#zona_arrastrar").bind({
+                    "dragover": manejoDragOver,
+                    "drop": manejoDrop
+                });
+            } else {
+                alert("Tu navegador no soporta Drag & Drop");
+            }
+
+            function manejoDragStart(evento) {
+                // Guarda el id para meter la imagen en la zona
+                evento.originalEvent.dataTransfer.setData("text/html", this.id);
+            }
+
+            function manejoDragOver(evento) {
+                // Para que drop no se solape con este evento
+                evento.stopPropagation();
+                evento.preventDefault();
+            }
+
+            function manejoDrop(evento) {
+                // Para que dragover no se solape con este evento
+                evento.stopPropagation();
+                evento.preventDefault();
+
+                // La imagen seleccionada pasa a estar contenida dentro de la zona_arrastrar
+                var idImgSel = evento.originalEvent.dataTransfer.getData("text/html");
+                evento.target.appendChild(document.getElementById(idImgSel));
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="cabecero-contenedor">
+        <header class="contenedor limpiar">
+            <h1 class="titulo">Proyecto final</h1>
+            <nav>
+                <ul>
+                    <li><a href="../form/">Formulario</a></li>
+                    <li><a href="../drag/">Drag</a></li>
+                    <li><a href="../video/">Video</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div class="principal contenedor limpiar">
+        <div id="imagenes">
+            <img id="img1" src="img1.png" draggable="true">
+            <img id="img2" src="img2.jpg" draggable="true">
+            <img id="img3" src="img3.png" draggable="true">
+        </div>
+
+        <div id="zona_arrastrar"></div>
+    </div>
+
+    <div class="pie-pagina-contenedor">
+        <footer class="contenedor">
+            <h3>Pie de página</h3>
+        </footer>
+    </div>
+</body>
+
+</html>

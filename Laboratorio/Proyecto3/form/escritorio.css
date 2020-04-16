@@ -1,0 +1,35 @@
+.titulo {
+    float: left;
+}
+
+nav {
+    float: right;
+    width: 38%;
+}
+
+.principal article {
+    float: left;
+    width: 57%;
+}
+
+input {
+    box-shadow: 2px 1px black;
+}
+
+input[type="button"] {
+    box-shadow: 2px 1px black;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+
+/* Ancho máximo página.
+ Si la resolución es muy grande los elementos no se flotan a los extremos,
+ se quedan en el centro. */
+
+@media only screen and (min-width: 2000px) {
+    .contenedor {
+        width: 2000px;
+        margin: 0 auto;
+    }
+}
