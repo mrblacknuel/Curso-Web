@@ -9,11 +9,12 @@ function addCarrito(item) {
     const name = itemObj.getElementsByTagName('h4')[0].innerHTML;
     const cost = itemObj.querySelector(".u-pull-right").innerHTML;
 
-    // Conexión con Local Storage
-    addCurso(image, name, cost);
+    // Si ha podido añadirlo a Local Storage actualiza
+    if(addCurso(image, name, cost)) {
+        // Actualización del carrito
+        updateCarrito(image, name, cost);
+    }
 
-    // Actualización del carrito
-    updateCarrito(image, name, cost);
 }
 
 /**
@@ -38,15 +39,22 @@ function addCarrito(item) {
  */
 function addCurso(imagen, nombre, coste) {
     let cursos = getCursos();
-    const savingObj = {
-        'imageSrc': imagen,
-        'name': nombre,
-        'cost': coste
-    }
 
-    cursos.push(savingObj);
-    localStorage.setItem(CURSOS, JSON.stringify(cursos));
-    return true;
+    // Si ya ha sido añadido no hace nada
+    const existe = cursos.some((c) => c.name === nombre);
+    if (existe) {
+        return false;
+    } else {
+        const savingObj = {
+            'imageSrc': imagen,
+            'name': nombre,
+            'cost': coste
+        }
+
+        cursos.push(savingObj);
+        localStorage.setItem(CURSOS, JSON.stringify(cursos));
+        return true;
+    }
 }
 
 /** 
