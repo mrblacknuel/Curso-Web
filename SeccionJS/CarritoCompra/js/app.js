@@ -13,7 +13,7 @@ function addCarrito(item) {
     addCurso(image, name, cost);
 
     // Actualización del carrito
-    updateCarrito();
+    updateCarrito(image, name, cost);
 }
 
 /**
@@ -28,11 +28,14 @@ function addCarrito(item) {
         tableRow.innerHTML = `  <td><img src="${c.imageSrc}"></td>
                                 <td>${c.name}</td>
                                 <td>${c.cost}</td>
-                                <td>X</td>`;
+                                <td><a onclick="deleteItem(this)" href="#">X</a></td>`;
         carritoBody.appendChild(tableRow);
     })
 })();
 
+/** 
+ * Añade un elemento al Local Storage.
+ */
 function addCurso(imagen, nombre, coste) {
     let cursos = getCursos();
     const savingObj = {
@@ -46,8 +49,17 @@ function addCurso(imagen, nombre, coste) {
     return true;
 }
 
+/** 
+ * Borra un curso de Local Storage.
+ */
+function deleteCurso(nombre) {
+    let cursos = getCursos();
+    cursos = cursos.filter((c) => c.name != nombre);
+    localStorage.setItem(CURSOS, JSON.stringify(cursos));
+}
+
 /**
- * Devuelve los cursos almacenados en LocalStorage. Devuelve un array vacío si no hay ninguno.
+ * Devuelve los cursos almacenados en Local Storage. Devuelve un array vacío si no hay ninguno.
  */
 function getCursos() {
     let cursos = JSON.parse(localStorage.getItem(CURSOS));
@@ -61,15 +73,29 @@ function getCursos() {
 /**
  * Añade el elemento clickado a lo que hay actualmente en el carrito.
  */
-function updateCarrito() {
-    console.log("Guardado");
+function updateCarrito(image, name, cost) {
+    let tableRow = document.createElement("tr");
+    tableRow.innerHTML = `  <td><img src="${image}"></td>
+                            <td>${name}</td>
+                            <td>${cost}</td>
+                            <td><a onclick="deleteItem(this)" href="#">X</a></td>`;
+    document.querySelector("#lista-carrito").lastElementChild.appendChild(tableRow);
 }
 
 /**
- * Borra el carrito del LocalStorage y de la interfaz gráfica.
+ * Borra el carrito del Local Storage y de la interfaz gráfica.
  */
 function clearCarrito(removeButton) {
     localStorage.removeItem(CURSOS);
     let carritoBody = removeButton.target.parentElement.firstElementChild.getElementsByTagName("tbody")[0];
     carritoBody.innerHTML = "";
+}
+
+function deleteItem(tag) {
+    let currentRow = tag.parentElement.parentElement;
+
+    let name = currentRow.children[1].innerHTML;
+    deleteCurso(name);
+
+    currentRow.remove();
 }
