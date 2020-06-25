@@ -11,14 +11,22 @@
 
       <ol>
         <li v-for="fruta of frutas">
-          {{fruta.nombre}} ({{fruta.cantidad}})
+          {{fruta.nombre}}
+          <input v-model.number="fruta.cantidad" />
+          <button @click="fruta.cantidad++">+</button>
           <span v-if="fruta.cantidad === 0" style="color: red;">Agotado</span>
         </li>
       </ol>
 
       <label for="nuevaFruta"></label>
-      <input v-model="nuevaFruta" type="text" name="nuevaFruta">
+      <input
+        v-model="nuevaFruta"
+        @keyup.enter="agregarFruta"
+        type="text"
+        name="nuevaFruta"
+      />
       <button @click="agregarFruta">Agregar</button>
+      <h3>TOTAL: {{sumarCantidad}}</h3>
     </div>
 
     <!-- Scripts -->
