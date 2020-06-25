@@ -15,6 +15,10 @@
           <span v-if="fruta.cantidad === 0" style="color: red;">Agotado</span>
         </li>
       </ol>
+
+      <label for="nuevaFruta"></label>
+      <input v-model="nuevaFruta" type="text" name="nuevaFruta">
+      <button @click="agregarFruta">Agregar</button>
     </div>
 
     <!-- Scripts -->
