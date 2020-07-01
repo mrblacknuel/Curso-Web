@@ -7,6 +7,9 @@ Vue.config.productionTip = false;
 
 import { auth } from "./firebase";
 
+import Vuelidate from "vuelidate";
+Vue.use(Vuelidate);
+
 auth.onAuthStateChanged((user) => {
   if (user) {
     console.log(user);

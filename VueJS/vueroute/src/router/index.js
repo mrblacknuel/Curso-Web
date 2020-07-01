@@ -22,14 +22,32 @@ const routes = [
   {
     path: "/services",
     name: "Services",
-    component: () =>
-      import("../views/Services.vue"),
+    component: () => import("../views/Services.vue"),
   },
   {
     path: "/fotos/:id",
     name: "Fotos",
-    component: () =>
-      import("../views/Fotos.vue"),
+    component: () => import("../views/Fotos.vue"),
+  },
+  {
+    path: "/grid",
+    name: "Grid",
+    component: () => import("../views/Grid.vue"),
+  },
+  {
+    path: "/cards",
+    name: "Cards",
+    component: () => import("../views/Cards.vue"),
+  },
+  {
+    path: "/formularios",
+    name: "Formularios",
+    component: () => import("../views/Formularios.vue"),
+  },
+  {
+    path: "/validacion",
+    name: "Validacion",
+    component: () => import("../views/Validacion.vue"),
   },
 ];
 

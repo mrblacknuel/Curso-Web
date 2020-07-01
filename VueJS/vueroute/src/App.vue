@@ -1,11 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/services">Servicios</router-link>
-    </div>
-    <router-view/>
+    <b-navbar toggleable="md" type="light">
+      <b-container>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-navbar-brand href="#">NavBar</b-navbar-brand>
+
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item :to="{name: 'Home'}" exact>Home</b-nav-item>
+            <b-nav-item :to="{name: 'About'}">About</b-nav-item>
+            <b-nav-item :to="{name: 'Services'}">Services</b-nav-item>
+            <b-nav-item :to="{name: 'Grid'}">Grid</b-nav-item>
+            <b-nav-item :to="{name: 'Cards'}">Cards</b-nav-item>
+            <b-nav-item :to="{name: 'Formularios'}">Formularios</b-nav-item>
+            <b-nav-item :to="{name: 'Validacion'}">Validacion</b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-container>
+    </b-navbar>
+
+    <b-container>
+      <router-view />
+    </b-container>
   </div>
 </template>
 
