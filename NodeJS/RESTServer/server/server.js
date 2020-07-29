@@ -1,45 +1,28 @@
 require("./config/config");
+const colors = require("colors");
 
-const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
+//const express = require("express");
+//const app = express();
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+const mongoose = require("mongoose");
 
-// parse application/json
-app.use(bodyParser.json());
-
-app.get("/usuario", function (req, res) {
-  res.json("get usuario");
-});
-
-app.post("/usuario", function (req, res) {
-  let body = req.body;
-
-  if (!body.nombre) {
-    res.status(400).json({
-      ok: false,
-      body,
-    });
-  } else {
-    res.json({
-      ok: true,
-      body,
-    });
+// Rutas de los usuarios en BD
+const app = require("./routes/usuario").app;
+mongoose.connect(
+  "mongodb://localhost:27017/cafe",
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  (err) => {
+    if (err) {
+      console.log("Imposible realizar la conexión con MongoDB".red);
+      throw err;
+    } else {
+      console.log(
+        "Conexión con MongoDB realizada de forma satisfactoria".yellow
+      );
+    }
   }
-});
-
-app.put("/usuario/:id", function (req, res) {
-  let id = req.params.id;
-
-  res.json({ id });
-});
-
-app.delete("/usuario", function (req, res) {
-  res.json("delete usuario");
-});
+);
 
 app.listen(process.env.PORT, () =>
-  console.log("Escuchando en el puerto", process.env.PORT)
+  console.log(`Escuchando en el puerto ${process.env.PORT}`.blue)
 );
