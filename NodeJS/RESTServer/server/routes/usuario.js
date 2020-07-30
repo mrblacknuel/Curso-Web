@@ -4,6 +4,12 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const _ = require("underscore");
 
+// Función de verificación de tokens
+const {
+  verificaToken,
+  verificaAdmin,
+} = require("../../middlewares/autenticacion");
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -13,11 +19,11 @@ app.use(bodyParser.json());
 // Modelo del usuario
 const Usuario = require("../../models/usuario");
 
-app.get("/usuario", function (req, res) {
+app.get("/", verificaToken, (req, res) => {
   let desde = Number(req.query.desde) || 0;
   let max = Number(req.query.max) || 5;
 
-  Usuario.find({estado: true}, "email nombre role estado")
+  Usuario.find({ estado: true }, "email nombre role estado")
     .skip(desde)
     .limit(max)
     .exec((err, usuarios) => {
@@ -28,7 +34,7 @@ app.get("/usuario", function (req, res) {
         });
       }
 
-      Usuario.countDocuments({estado: true}, (err, count) => {
+      Usuario.countDocuments({ estado: true }, (err, count) => {
         res.json({
           ok: true,
           usuarios,
@@ -38,7 +44,7 @@ app.get("/usuario", function (req, res) {
     });
 });
 
-app.post("/usuario", function (req, res) {
+app.post("/", [verificaToken, verificaAdmin], (req, res) => {
   let body = req.body;
 
   let usuario = new Usuario({
@@ -63,7 +69,7 @@ app.post("/usuario", function (req, res) {
   });
 });
 
-app.put("/usuario/:id", function (req, res) {
+app.put("/:id", [verificaToken, verificaAdmin], (req, res) => {
   let id = req.params.id;
 
   // Filtra el objeto para que no se pueda modificar la contraseña por ejemplo
@@ -84,7 +90,7 @@ app.put("/usuario/:id", function (req, res) {
   );
 });
 
-app.delete("/usuario/:id", function (req, res) {
+app.delete("/:id", [verificaToken, verificaAdmin], (req, res) => {
   let id = req.params.id;
 
   /*Usuario.findByIdAndRemove(id, (err, eliminado) => {
@@ -123,6 +129,4 @@ app.delete("/usuario/:id", function (req, res) {
   );
 });
 
-module.exports = {
-  app,
-};
+module.exports = app;

@@ -1,13 +1,14 @@
 require("./config/config");
 const colors = require("colors");
 
-//const express = require("express");
-//const app = express();
+const express = require("express");
+const app = express();
 
 const mongoose = require("mongoose");
 
 // Rutas de los usuarios en BD
-const app = require("./routes/usuario").app;
+app.use("/", require("./routes/index"));
+
 mongoose.connect(
   "mongodb://localhost:27017/cafe",
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
