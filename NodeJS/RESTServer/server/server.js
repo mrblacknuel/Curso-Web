@@ -24,6 +24,10 @@ mongoose.connect(
   }
 );
 
+// Crear servidor web http
+const path = require("path");
+app.use(express.static(path.resolve(__dirname, "../public")));
+
 app.listen(process.env.PORT, () =>
   console.log(`Escuchando en el puerto ${process.env.PORT}`.blue)
 );
